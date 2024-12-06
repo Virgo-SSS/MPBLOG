@@ -1,0 +1,92 @@
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    background-color: #F5F5F9;
+}
+
+.sidebar {
+    background-color: #000;
+    color: #fff;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    margin: 5px 10px;
+}
+
+.sidebar a:hover {
+    background-color: #333;
+    padding-left: 25px;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar a i {
+    margin-right: 10px;
+}
+
+.has-submenu i.arrow {
+    margin-left: auto;
+}
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.submenu a {
+    padding: 5px 20px;
+    margin-left: 10px;
+}
+
+.content-wrapper {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 20px;
+}
+
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1030;
+    border-radius: 10px;
+}
+
+.profile-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.profile-menu a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: #000;
+    text-decoration: none;
+}
+
+.profile-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+.profile-menu a i {
+    margin-right: 10px;
+}
+
+.sticky-navbar {
+    position: sticky;
+    top: 0;
+}
