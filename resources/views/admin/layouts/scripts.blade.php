@@ -1,7 +1,6 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
 <script>
     // Toggle submenu
     $('.has-submenu').click(function () {
@@ -21,4 +20,26 @@
             $('#profile-menu').hide();
         }
     });
+</script>
+
+<script>
+    @if(session('success-swal'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: '{{ session('success-swal') }}',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    @endif
+
+    @if(session('error-swal'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '{{ session('error-swal') }}',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    @endif
 </script>
