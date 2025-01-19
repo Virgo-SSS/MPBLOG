@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::post('/store', [TagController::class, 'store'])->name('tag.store');
         Route::put('/update/{tag}', [TagController::class, 'update'])->name('tag.update');
         Route::delete('/delete/{tag}', [TagController::class, 'delete'])->name('tag.delete');
+    });
+
+    Route::controller(PostController::class)->prefix('post')->group(function () {
+        Route::get('/', [PostController::class, 'index'])->name('post.index');
+        Route::get('/create', [PostController::class, 'create'])->name('post.create');
+        Route::post('/store', [PostController::class, 'store'])->name('post.store');
+        Route::get('/edit/{post}', [PostController::class, 'edit'])->name('post.edit');
+        Route::put('/update/{post}', [PostController::class, 'update'])->name('post.update');
+        Route::delete('/delete/{post}', [PostController::class, 'delete'])->name('post.delete');
     });
 });
 
