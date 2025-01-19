@@ -3,12 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Tag extends Model
 {
-    protected $table = 'tags';
-    
+    protected $table = 'tag';
+
     protected $fillable = [
-        'name'
+        'post_id',
+        'name',
     ];
+
+    public function post(): BelongsTo
+    {
+        return $this->belongsTo(Post::class, 'post_id', 'id');
+    }
 }

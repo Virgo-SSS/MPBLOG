@@ -15,7 +15,4 @@
     <a href="{{ route('category.index') }}">
         <i class="bx bx-news"></i> Category
     </a>
-    <a href="{{ route('tag.index') }}">
-        <i class="bx bx-news"></i> Tag
-    </a>
 </div>

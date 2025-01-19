@@ -29,13 +29,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::delete('/delete/{category}', [CategoryController::class, 'delete'])->name('category.delete');
     });
 
-    Route::controller(TagController::class)->prefix('tag')->group(function () {
-        Route::get('/', [TagController::class, 'index'])->name('tag.index');
-        Route::post('/store', [TagController::class, 'store'])->name('tag.store');
-        Route::put('/update/{tag}', [TagController::class, 'update'])->name('tag.update');
-        Route::delete('/delete/{tag}', [TagController::class, 'delete'])->name('tag.delete');
-    });
-
     Route::controller(PostController::class)->prefix('post')->group(function () {
         Route::get('/', [PostController::class, 'index'])->name('post.index');
         Route::get('/create', [PostController::class, 'create'])->name('post.create');
