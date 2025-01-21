@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdatePostRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -22,7 +23,11 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string'],
+            'image' => ['nullable', 'image', 'max:2048', 'mimes:jpg,jpeg,png'],
+            'tags' => ['nullable', 'array'],
+            'category_id' => ['required', 'integer', 'exists:categories,id'],
         ];
     }
 }

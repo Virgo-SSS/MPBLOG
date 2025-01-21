@@ -10,6 +10,8 @@
                         <th scope="col">No</th>
                         <th scope="col">Title</th>
                         <th scope="col">Content</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Tags</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -19,6 +21,12 @@
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $post->title }}</td>
                         <td>{{ Str::limit($post->content, 50) }}</td>
+                        <td>{{ $post->category->name }}</td>
+                        <td>
+                            @foreach($post->tags as $tag)
+                                <span class="badge bg-primary">{{ $tag->name }}</span>
+                            @endforeach
+                        </td>
                         <td>
                             <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-warning">Edit</a>
                             <form action="{{ route('post.delete', $post->id) }}" method="POST" class="d-inline">

@@ -18,7 +18,10 @@
 
                     <div class="form-group mb-3">
                         <label for="tags-input" class="form-label">Tags</label>
-                        <select class="form-select" id="tags-input" name="tags[]" multiple data-allow-new="true">
+                        <select class="form-select" id="tags-input" name="tags[]" 
+                            multiple 
+                            data-allow-clear="true"
+                            data-allow-new="true">
                             <option disabled hidden value="">Choose a tag...</option>
                         </select>
                         @error('tags')
@@ -32,6 +35,10 @@
                         @error('image')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <img src="#" id="image-preview" alt="Image Preview" class="img-thumbnail d-block" style="width: 300px">
                     </div>
                     
                     <div class="form-group mb-3">
@@ -60,4 +67,17 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script>
+        function showPreview(event){
+            if(event.target.files.length > 0){
+                var src = URL.createObjectURL(event.target.files[0]);
+                var preview = document.getElementById("image-preview");
+                preview.src = src;
+                preview.style.display = "block";
+            }
+        }
+    </script>
 @endsection
