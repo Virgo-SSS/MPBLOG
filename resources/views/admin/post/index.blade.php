@@ -21,7 +21,7 @@
                         <td>{{ Str::limit($post->content, 50) }}</td>
                         <td>
                             <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                            <form action="{{ route('post.destroy', $post->id) }}" method="POST" class="d-inline">
+                            <form action="{{ route('post.delete', $post->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger">Delete</button>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Action\Admin\Post\CreatePostAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\StorePostRequest;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,13 +21,14 @@ class PostController extends Controller
 
     public function create(): View
     {
-        return view('admin.post.create');
+        $categories = Category::query()->pluck('name', 'id');
+        return view('admin.post.create', compact('categories'));
     }
 
     public function store(StorePostRequest $request, CreatePostAction $action): RedirectResponse
     {
         $action->execute($request->validated());
 
-        return redirect()->route('admin.post.index')->with('success-swal', 'Post created successfully.');
+        return redirect()->route('post.index')->with('success-swal', 'Post created successfully.');
     }
 }
