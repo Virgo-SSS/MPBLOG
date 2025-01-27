@@ -31,14 +31,14 @@
 
                     <div class="form-group mb-3">
                         <label for="image" class="form-label">Upload Image</label>
-                        <input type="file" class="form-control" id="image" name="image">
+                        <input type="file" class="form-control" id="image" name="image" accept="image/*" onchange="showPreview(event)">
                         @error('image')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="form-group mb-3">
-                        <img src="#" id="image-preview" alt="Image Preview" class="img-thumbnail d-block" style="width: 300px">
+                        <img src="#" id="image-preview" alt="Image Preview" class="img-thumbnail d-none" style="width: 300px">
                     </div>
                     
                     <div class="form-group mb-3">
@@ -76,7 +76,8 @@
                 var src = URL.createObjectURL(event.target.files[0]);
                 var preview = document.getElementById("image-preview");
                 preview.src = src;
-                preview.style.display = "block";
+                preview.classList.remove("d-none");
+                preview.classList.add("d-block");
             }
         }
     </script>
