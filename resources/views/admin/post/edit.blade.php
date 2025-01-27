@@ -41,13 +41,14 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-
-                    {{-- add image preview --}}
-                    @if($post->image)
-                        <div class="form-group mb-3">
-                            <img src="{{ asset('storage/post/images/' . $post->image) }}" id="image-preview" alt="Image Preview" class="img-thumbnail d-block" style="width: 300px">
-                        </div>
-                    @endif
+                    <div class="form-group mb-3">
+                        <img src="{{ asset('storage/post/images/' . $post->image) }}" id="image-preview" alt="Image Preview" style="width: 300px;" 
+                        @class([
+                            'img-thumbnail',
+                            'd-none' => !$post->image,
+                            'd-block' => $post->image
+                        ])>
+                    </div>
                     
                     <div class="form-group mb-3">
                         <label for="category" class="form-label">Category<span class="text-danger">*</span></label>
@@ -84,7 +85,8 @@
                 var src = URL.createObjectURL(event.target.files[0]);
                 var preview = document.getElementById("image-preview");
                 preview.src = src;
-                preview.style.display = "block";
+                preview.classList.remove("d-none");
+                preview.classList.add("d-block");
             }
         }
     </script>

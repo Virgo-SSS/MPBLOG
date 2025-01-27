@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Action\Admin\Post\CreatePostAction;
+use App\Action\Admin\Post\DeletePostAction;
 use App\Action\Admin\Post\EditPostAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\StorePostRequest;
@@ -45,5 +46,12 @@ class PostController extends Controller
         $action->execute($post, $request->validated());
 
         return redirect()->route('post.index')->with('success-swal', 'Post updated successfully.');
+    }
+
+    public function delete(Post $post, DeletePostAction $action): RedirectResponse
+    {
+        $action->execute($post);
+
+        return redirect()->route('post.index')->with('success-swal', 'Post deleted successfully.');
     }
 }
