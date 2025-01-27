@@ -3,6 +3,7 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #F5F5F9;
+    font-family:  "Poppins" !important;
 }
 
 .sidebar {
@@ -89,4 +90,12 @@ body {
 .sticky-navbar {
     position: sticky;
     top: 0;
+}
+
+.card {
+    background-color: #fff !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
 }

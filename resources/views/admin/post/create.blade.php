@@ -10,7 +10,7 @@
                     @csrf
                     <div class="form-group mb-3">
                         <label for="title" class="form-label">Title<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="title" name="title" required>
+                        <input type="text" class="form-control" id="title" name="title" required placeholder="Enter post title" value="{{ old('title') }}">
                         @error('title')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -46,7 +46,7 @@
                         <select class="form-control" id="category" name="category_id" required>
                             <option value="" disabled selected>Choose a category...</option>
                             @foreach($categories as $id => $category)
-                                <option value="{{ $id }}">{{ $category }}</option>
+                                <option value="{{ $id }}" @selected($id == old('category_id'))>{{ $category }}</option>
                             @endforeach
                         </select>
                         @error('category_id')
@@ -56,7 +56,7 @@
 
                     <div class="form-group mb-3">
                         <label for="content" class="form-label">Content<span class="text-danger">*</span></label>
-                        <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+                        <textarea class="form-control" id="content" name="content" rows="5" required placeholder="Enter post content">{{ old('content') }}</textarea>
                         @error('content')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

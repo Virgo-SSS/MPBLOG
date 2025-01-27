@@ -1,12 +1,42 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <h1>Category</h1>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
-            Add Category
-        </button>
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="d-flex justify-content-between">
+            <h4>Category List</h4>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+                Add Category
+            </button>
+        </div>
+
+        <table class="table table-responsive mt-3">
+            <thead>
+                <tr class="table-dark text-center">
+                    <th>No</th>
+                    <th>Category Name</th>
+                    <th style="width: 200px">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($categories as $category)
+                    <tr class="text-center">
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $category->name }}</td>
+                        <td class="d-flex justify-content-center gap-2">
+                            <a href="#" class="btn btn-warning" onclick="editCategory({{ json_encode($category->only(['id', 'name'])) }})">Edit</a> 
+                            
+                            <form action="{{ route('category.delete', $category->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+      
 
         <!-- Modal -->
         <div class="modal fade" id="addCategoryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -33,32 +63,7 @@
             </div>
         </div>
 
-        <table class="table table-bordered mt-3">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Category Name</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($categories as $category)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $category->name }}</td>
-                        <td class="d-flex justify-content-center gap-2">
-                            <a href="#" class="btn btn-warning" onclick="editCategory({{ json_encode($category->only(['id', 'name'])) }})">Edit</a> 
-                            
-                            <form action="{{ route('category.delete', $category->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+     
     </div>
 
     <!-- Modal Edit -->

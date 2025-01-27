@@ -1,12 +1,12 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-md-12">
+<div class="row justify-content-center">
+    <div class="col-md-11">
         <div class="table-responsive">
-            <table class="table table-dark table-striped">
+            <table class="table table-responsive table-borderless">
                 <thead>
-                    <tr>
+                    <tr class="bg-dark">
                         <th scope="col">No</th>
                         <th scope="col">Title</th>
                         <th scope="col">Content</th>
