@@ -7,6 +7,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <!-- Add Navbar items here if needed -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('home') }}">
+                        <i class="bx bx-home"> </i> Home
+                    </a>
+                </li>
             </ul>
             <div class="d-flex align-items-center position-relative">
                 <img src="https://via.placeholder.com/40" alt="Profile" class="rounded-circle me-2"

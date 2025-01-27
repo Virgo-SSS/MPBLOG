@@ -12,6 +12,31 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <style>
+       .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .content {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+        .tag {
+            background-color: #e9ecef;
+            border-radius: 30px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.875rem;
+            color: #495057;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
