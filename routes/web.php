@@ -40,3 +40,4 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/data', [HomeController::class, 'data'])->name('data');
